@@ -1,2 +1,2 @@
-# PetaLinix
+# PetaLinux Project
  
