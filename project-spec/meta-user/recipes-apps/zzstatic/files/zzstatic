@@ -1,0 +1,7 @@
+echo "Hello PetaLinux World"
+#ifconfig
+ifconfig eth0 192.168.0.10 netmask 255.255.255.0
+ifconfig eth2 192.168.10.10 netmask 255.255.255.0
+mkdir /media/sdcard
+mount /dev/mmcblk0p1 /media/sdcard
+#/media/sdcard/TestLinux.elf

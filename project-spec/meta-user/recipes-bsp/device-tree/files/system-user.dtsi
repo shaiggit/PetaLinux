@@ -1,0 +1,92 @@
+/include/ "system-conf.dtsi"
+/ {
+};
+
+/* SD */
+&sdhci0 {
+    disable-wp;
+    no-1-8-v;
+ 
+};
+
+
+&gem0 {
+	status = "okay";	
+    phys = <&lane0 6 0 2 125000000>;
+    phy-mode = "sgmii";
+    is-internal-pcspma;
+    fixed-link {
+        speed = <1000>;
+        full-duplex;
+    };       
+};
+
+
+&gem1 {
+	status = "okay";	
+    phys = <&lane0 6 0 2 125000000>;
+    phy-mode = "sgmii";
+    is-internal-pcspma;
+    fixed-link {
+        speed = <1000>;
+        full-duplex;
+    };       
+};
+
+
+
+&gem2 {
+	status = "okay";
+	phy-handle = <&phy0>;
+	phy-mode = "rgmii-id";  
+	xlnx,eth-mode = <0x1>;            
+	mdio {
+		status = "okay";
+		xlnx,has-mdio = <0x1>;
+		#address-cells = <1>;		 
+		#size-cells = <0>;
+		phy0: phy@13 {
+					compatible = "ethernet-phy-ieee802.3-c22";
+					device_type = "ethernet-phy";
+					reg = <13>;
+					ti,rx-internal-delay = <0x8>;
+					ti,tx-internal-delay = <0xa>;
+					ti,fifo-depth = <0x01>;	
+					ti,min-output-impedance;
+					ti,dp83867-rxctrl-strap-quirk;
+					status = "okay";			
+		};
+	};
+};
+
+
+
+&spi0 {
+	is-decoded-cs = <1>;
+	num-cs = <1>;
+	status = "okay";
+
+	spidev@0 {
+	compatible = "spidev";
+	reg =<0>;
+	spi-max-frequency = <1000000>;
+	};
+};
+
+&spi1 {
+	is-decoded-cs = <1>;
+	num-cs = <1>;
+	status = "okay";
+
+	spidev@1 {
+	compatible = "spidev";
+	reg =<0>;
+	spi-max-frequency = <1000000>;
+	};
+};
+
+
+
+
+
+
